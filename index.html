@@ -1,13 +1,122 @@
-<!doctype html>
-<html>
-  <head>
-    <title>Chicken Nugget</title>
-    <meta name="description" content="Made for the ChickenNugget Guy.">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="shortcut icon" href="favicon.jpeg" type="image/jpeg" />
-  </head>
-  <body>
-    <p>welcome to chicken nugget world</p>
-  <a href="/admin/admin-console.html">Find my secret</a>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Creation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .description {
+            resize: vertical;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Create Your Character</h1>
+        <form action="#" method="POST">
+            <!-- Name Input -->
+            <label for="name">Character Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter character's name" required>
+
+            <!-- Age Input -->
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" placeholder="Enter character's age" min="0" required>
+
+            <!-- Race Dropdown -->
+            <label for="race">Race:</label>
+            <select id="race" name="race">
+                <option value="human">Human</option>
+                <option value="elf">Elf</option>
+                <option value="dwarf">Dwarf</option>
+                <option value="orc">Orc</option>
+                <option value="custom">Custom Race</option>
+            </select>
+
+            <!-- Class Dropdown -->
+            <label for="class">Class:</label>
+            <select id="class" name="class">
+                <option value="warrior">Warrior</option>
+                <option value="mage">Mage</option>
+                <option value="rogue">Rogue</option>
+                <option value="cleric">Cleric</option>
+                <option value="custom">Custom Class</option>
+            </select>
+
+            <!-- Gender Radio Buttons -->
+            <label for="gender">Gender:</label>
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label>
+            <input type="radio" id="other" name="gender" value="other">
+            <label for="other">Other</label>
+
+            <!-- Skills (Checkboxes) -->
+            <label for="skills">Skills:</label>
+            <input type="checkbox" id="swordsmanship" name="skills" value="swordsmanship">
+            <label for="swordsmanship">Swordsmanship</label>
+            <input type="checkbox" id="archery" name="skills" value="archery">
+            <label for="archery">Archery</label>
+            <input type="checkbox" id="alchemy" name="skills" value="alchemy">
+            <label for="alchemy">Alchemy</label>
+            <input type="checkbox" id="magic" name="skills" value="magic">
+            <label for="magic">Magic</label>
+            <input type="checkbox" id="stealth" name="skills" value="stealth">
+            <label for="stealth">Stealth</label>
+
+            <!-- Description (Textarea) -->
+            <label for="description">Character Description:</label>
+            <textarea id="description" name="description" rows="5" placeholder="Describe your character's background, appearance, etc." class="description"></textarea>
+
+            <!-- Submit Button -->
+            <button type="submit">Create Character</button>
+        </form>
+    </div>
+</body>
 </html>
+
