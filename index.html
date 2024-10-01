@@ -65,6 +65,11 @@
             resize: vertical;
         }
 
+        .custom-input {
+            display: none;
+            margin-top: 10px;
+        }
+
         button {
             margin-top: 20px;
             padding: 10px;
@@ -96,23 +101,27 @@
 
             <!-- Race Dropdown -->
             <label for="race">Race:</label>
-            <select id="race" name="race">
+            <select id="race" name="race" onchange="toggleCustomInput(this, 'customRaceInput')">
                 <option value="human">Human</option>
                 <option value="elf">Elf</option>
                 <option value="dwarf">Dwarf</option>
                 <option value="orc">Orc</option>
                 <option value="custom">Custom Race</option>
             </select>
+            <!-- Custom Race Input (Initially Hidden) -->
+            <input type="text" id="customRaceInput" name="customRace" class="custom-input" placeholder="Enter custom race">
 
             <!-- Class Dropdown -->
             <label for="class">Class:</label>
-            <select id="class" name="class">
+            <select id="class" name="class" onchange="toggleCustomInput(this, 'customClassInput')">
                 <option value="warrior">Warrior</option>
                 <option value="mage">Mage</option>
                 <option value="rogue">Rogue</option>
                 <option value="cleric">Cleric</option>
                 <option value="custom">Custom Class</option>
             </select>
+            <!-- Custom Class Input (Initially Hidden) -->
+            <input type="text" id="customClassInput" name="customClass" class="custom-input" placeholder="Enter custom class">
 
             <!-- Gender Radio Buttons -->
             <label>Gender:</label>
@@ -164,6 +173,18 @@
             <button type="submit">Create Character</button>
         </form>
     </div>
+
+    <script>
+        // JavaScript to toggle visibility of the custom input fields
+        function toggleCustomInput(selectElement, customInputId) {
+            var customInput = document.getElementById(customInputId);
+            if (selectElement.value === 'custom') {
+                customInput.style.display = 'block';
+            } else {
+                customInput.style.display = 'none';
+                customInput.value = ''; // Clear custom input when hidden
+            }
+        }
+    </script>
 </body>
 </html>
-
