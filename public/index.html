@@ -3,190 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Character Creation</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
-            background-color: #fff;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-
-        label {
-            margin-top: 15px;
-            font-weight: bold;
-        }
-
-        input, select, textarea {
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 1rem;
-            width: 100%;
-        }
-
-        input[type="radio"], input[type="checkbox"] {
-            width: auto;
-            margin-right: 5px;
-        }
-
-        .radio-group, .checkbox-group {
-            display: flex;
-            flex-wrap: wrap;
-            margin-top: 5px;
-        }
-
-        .radio-group label, .checkbox-group label {
-            margin-right: 20px;
-            display: flex;
-            align-items: center;
-        }
-
-        textarea {
-            resize: vertical;
-        }
-
-        .custom-input {
-            display: none;
-            margin-top: 10px;
-        }
-
-        button {
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #28a745;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1.2rem;
-            width: 100%;
-        }
-
-        button:hover {
-            background-color: #218838;
-        }
-    </style>
+    <title>Character Creator</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Create Your Character</h1>
-        <form action="#" method="POST">
-            <!-- Name Input -->
-            <label for="name">Character Name:</label>
-            <input type="text" id="name" name="name" placeholder="Enter character's name" required>
-
-            <!-- Age Input -->
-            <label for="age">Age:</label>
-            <input type="number" id="age" name="age" placeholder="Enter character's age" min="0" required>
-
-            <!-- Race Dropdown -->
-            <label for="race">Race:</label>
-            <select id="race" name="race" onchange="toggleCustomInput(this, 'customRaceInput')">
-                <option value="human">Human</option>
-                <option value="elf">Elf</option>
-                <option value="dwarf">Dwarf</option>
-                <option value="orc">Orc</option>
-                <option value="custom">Custom Race</option>
-            </select>
-            <!-- Custom Race Input (Initially Hidden) -->
-            <input type="text" id="customRaceInput" name="customRace" class="custom-input" placeholder="Enter custom race">
-
-            <!-- Class Dropdown -->
-            <label for="class">Class:</label>
-            <select id="class" name="class" onchange="toggleCustomInput(this, 'customClassInput')">
-                <option value="warrior">Warrior</option>
-                <option value="mage">Mage</option>
-                <option value="rogue">Rogue</option>
-                <option value="cleric">Cleric</option>
-                <option value="custom">Custom Class</option>
-            </select>
-            <!-- Custom Class Input (Initially Hidden) -->
-            <input type="text" id="customClassInput" name="customClass" class="custom-input" placeholder="Enter custom class">
-
-            <!-- Gender Radio Buttons -->
-            <label>Gender:</label>
-            <div class="radio-group">
-                <label for="male">
-                    <input type="radio" id="male" name="gender" value="male">
-                    Male
-                </label>
-                <label for="female">
-                    <input type="radio" id="female" name="gender" value="female">
-                    Female
-                </label>
-                <label for="other">
-                    <input type="radio" id="other" name="gender" value="other">
-                    Other
-                </label>
-            </div>
-
-            <!-- Skills (Checkboxes) -->
-            <label for="skills">Skills:</label>
-            <div class="checkbox-group">
-                <label for="swordsmanship">
-                    <input type="checkbox" id="swordsmanship" name="skills" value="swordsmanship">
-                    Swordsmanship
-                </label>
-                <label for="archery">
-                    <input type="checkbox" id="archery" name="skills" value="archery">
-                    Archery
-                </label>
-                <label for="alchemy">
-                    <input type="checkbox" id="alchemy" name="skills" value="alchemy">
-                    Alchemy
-                </label>
-                <label for="magic">
-                    <input type="checkbox" id="magic" name="skills" value="magic">
-                    Magic
-                </label>
-                <label for="stealth">
-                    <input type="checkbox" id="stealth" name="skills" value="stealth">
-                    Stealth
-                </label>
-            </div>
-
-            <!-- Description (Textarea) -->
-            <label for="description">Character Description:</label>
-            <textarea id="description" name="description" rows="5" placeholder="Describe your character's background, appearance, etc." class="description"></textarea>
-
-            <!-- Submit Button -->
-            <button type="submit">Create Character</button>
-        </form>
+    <div class="character">
+        <div id="character-preview">
+            <img id="body" src="body.png" alt="Character Body">
+            <img id="hair" src="" alt="Character Hair">
+            <img id="shirt" src="" alt="Character Shirt">
+        </div>
     </div>
 
-    <script>
-        // JavaScript to toggle visibility of the custom input fields
-        function toggleCustomInput(selectElement, customInputId) {
-            var customInput = document.getElementById(customInputId);
-            if (selectElement.value === 'custom') {
-                customInput.style.display = 'block'; // Show the custom input
-                customInput.setAttribute('required', 'true'); // Make it required
-            } else {
-                customInput.style.display = 'none'; // Hide the custom input
-                customInput.removeAttribute('required'); // Remove required if it's hidden
-                customInput.value = ''; // Clear the input value
-            }
-        }
-    </script>
+    <div class="options">
+        <h2>Choose Hair:</h2>
+        <button onclick="setHair('blonde')">Blonde</button>
+        <button onclick="setHair('brown')">Brown</button>
+        <button onclick="setHair('black')">Black</button>
+
+        <h2>Choose Shirt:</h2>
+        <button onclick="setShirt('shirt-a')">Shirt A</button>
+        <button onclick="setShirt('shirt-b')">Shirt B</button>
+        <button onclick="setShirt('shirt-c')">Shirt C</button>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
