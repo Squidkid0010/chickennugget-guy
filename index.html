@@ -179,10 +179,12 @@
         function toggleCustomInput(selectElement, customInputId) {
             var customInput = document.getElementById(customInputId);
             if (selectElement.value === 'custom') {
-                customInput.style.display = 'block';
+                customInput.style.display = 'block'; // Show the custom input
+                customInput.setAttribute('required', 'true'); // Make it required
             } else {
-                customInput.style.display = 'none';
-                customInput.value = ''; // Clear custom input when hidden
+                customInput.style.display = 'none'; // Hide the custom input
+                customInput.removeAttribute('required'); // Remove required if it's hidden
+                customInput.value = ''; // Clear the input value
             }
         }
     </script>
